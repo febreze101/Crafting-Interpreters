@@ -31,12 +31,57 @@ void displayNode(Node *node) {
   printf("The linked list elements are: \n");
 
   while (node != NULL) {
-    printf(" %s\n", node->data);
+    printf("%s\n", node->data);
     last = node;
 
     node = node->next;
   }
 }
+
+void insertAfter(Node* currNode, Node* newNode) {
+  newNode->prev = currNode;
+
+  // if current node has no next
+  if (currNode->next == NULL) {
+    currNode->next = newNode;
+  } else {
+    newNode->next = currNode->next;
+    currNode->next = newNode;
+  }
+}
+
+void insertBefore(Node* currNode, Node* newNode) {
+  newNode->next = currNode;
+
+  if(currNode->prev == NULL) {
+    currNode->prev = newNode;
+  } else {
+    newNode->prev = currNode->prev;
+    currNode->prev = newNode;
+  }
+}
+
+void deleteNode(Node* currNode) { 
+  /* if no prev */
+  if (currNode->prev == NULL) {
+    currNode = NULL;
+  } else if (currNode->next == NULL) {
+    currNode = NULL;
+  } else {
+    currNode->prev->next = currNode->next;
+  }
+
+  free(currNode);
+}
+
+void findNode(char* data) {
+
+}
+
+void insertBeginning(Node* currNode) {
+
+}
+
 
 int main() {
   Node* head;
