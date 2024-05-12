@@ -10,6 +10,7 @@ delete items from it. Test them.
 #include <locale.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct Node {
   struct Node *next; /* A reference to the next node */
@@ -24,8 +25,51 @@ struct Node newNode(uint8_t *prev, char *data) {
   return n;
 }
 
-int main() {
-  Node head = {.prev = NULL, .data = "A", .next = NULL};
+void displayNode(Node *node) {
+  Node* last;
 
-  Node tail = {.prev = head.next, .data = "B", .next = NULL};
+  printf("The linked list elements are: \n");
+
+  while (node != NULL) {
+    printf(" %s\n", node->data);
+    last = node;
+
+    node = node->next;
+  }
+}
+
+int main() {
+  Node* head;
+  Node* first = NULL;
+  Node* second = NULL;
+  Node* third = NULL;
+  Node* fourth = NULL;
+
+  first = (struct Node*)malloc(sizeof(struct Node));
+
+  second = (struct Node*)malloc(sizeof(struct Node));
+
+  third = (struct Node*)malloc(sizeof(struct Node));
+
+  fourth = (struct Node*)malloc(sizeof(struct Node));
+
+  /* init all nodes */
+  first->data = "A";
+  first->next = second;
+
+  second->prev = first;
+  second->data = "B";
+  second->next = third;
+
+  third->prev = second;
+  third->data = "C";
+  third->next = fourth;
+
+  fourth->prev = third;
+  fourth->data = "D";
+
+  head = first;
+
+  displayNode(first);
+
 }
