@@ -24,6 +24,11 @@ class TokenType(Enum):
     LESS = auto()
     LESS_EQUAL = auto()
     
+    # Literals.
+    IDENTIFIER = auto()
+    STRING = auto()
+    NUMBER = auto()
+    
     # keywords
     AND = auto()
     CLASS = auto()
@@ -32,7 +37,7 @@ class TokenType(Enum):
     FUN = auto()
     FOR = auto()
     IF = auto()
-    NIL = auto()
+    NULL = auto()
     OR = auto()
     PRINT = auto()
     RETURN = auto()
